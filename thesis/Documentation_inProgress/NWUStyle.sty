@@ -1,0 +1,217 @@
+\usepackage{graphics}
+\usepackage[citebordercolor={0 0 0.8}]{hyperref} 
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[longnamesfirst,round,semicolon,authoryear]{natbib}
+\usepackage{adjustbox}
+\usepackage{chngpage}
+\usepackage{ifthen}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[defaultlines=3,all]{nowidow}
+\usepackage{tocloft}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage[margin=0in, includefoot]{geometry}
+\usepackage{booktabs}
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}
+
+
+\bibliographystyle{apalike} %Specify the bibliography style (currently using an APA-like style, which is very close to the Harvard style).
+
+%Specify the margin, page and other dimensions of the Thesis
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+  left=2.5cm,
+	right=2cm,
+  top=2cm,
+	bottom=2cm 
+ }
+\renewcommand{\baselinestretch}{1.25} 
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{1em}
+
+%% OrcID inline logo 
+\newcommand*{\img}[1]{%
+    \raisebox{-.3\baselineskip}{%
+        \includegraphics[
+        height=\baselineskip,
+        width=\baselineskip,
+        keepaspectratio,
+        ]{#1}%
+    }%
+}
+
+%Set up variables
+%==========================================================
+%Set up the \StudentNumber variable. [required]
+\newcommand{\StudentNumber}[1]{ 
+	\newcommand{\studentnumber}{#1} 
+}
+%Set up the \ORCID variable. [required]
+\newcommand{\ORCID}[1]{ 
+	\newcommand{\orcid}{#1} 
+}
+%Set up the \Initials variable. [required]
+\newcommand{\Initials}[1]{ 
+	\newcommand{\initials}{#1} 
+}
+%Set up the \FirstName variable. [required]
+\newcommand{\FirstName}[1]{ 
+	\newcommand{\firstname}{#1} 
+}
+%Set up the \Surname variable. [required]
+\newcommand{\Surname}[1]{ 
+	\newcommand{\surname}{#1} 
+}
+%Set up the \Title variable. [required]
+\newcommand{\Title}[1]{ 
+	\newcommand{\mytitle}{#1} 
+}
+%Set up the \MScorPhD variable. [required]
+\newcommand{\MScorPhD}[1]{ 
+	\newcommand{\mscorphd}{#1} 
+}
+%Set up the \Field variable. [required]
+\newcommand{\Field}[1]{ 
+	\newcommand{\myfield}{#1} 
+}
+%Set up the \Supervisor variable. [required]
+\newcommand{\Supervisor}[1]{ 
+	\newcommand{\supervisor}{#1} 
+}
+
+%Set up environments
+%==========================================================
+%Create the Acknowledgements environment
+\newenvironment{Acknowledgements}% environment name
+{% begin code
+	\setcounter{page}{1}
+	\pagenumbering{roman}
+	\chapter*{Acknowledgements}
+}%
+{
+\clearpage
+}% end code
+
+%Create the Abstract environment
+\newenvironment{Abstract}[1]% environment name
+{% begin code
+	\chapter*{Abstract}
+}%
+{
+	\clearpage
+}% end code
+
+%Create the Abstract environment
+\newenvironment{Opsomming}[1]% environment name
+{% begin code
+	\chapter*{Opsomming}
+}%
+{
+	\clearpage
+}% end code
+
+%Create the table of abbreviations environment
+\newenvironment{TableOfAbbrev}% environment name
+{% begin code
+	\chapter*{Table of abbreviations}
+}%
+{
+	\clearpage
+}% end code
+
+
+%Set up new commands
+%==========================================================
+
+%Create the new '\cites' command
+\newcommand\cites[1]{\citeauthor{#1}'s\ (\citeyear{#1})}
+
+%Make the table of contents, list of figures and list of tables.
+\newcommand{\MakeTOCandLOFandLOT}{
+	\clearpage
+	\renewcommand{\contentsname}{Table of Contents}
+     
+     \renewcommand{\cftchapfont}{\bfseries}
+     \renewcommand{\cftsecfont}{\mdseries}	
+	 \renewcommand{\cftsubsecfont}{}	
+	 \renewcommand{\cftsubsubsecfont}{\itshape}
+
+	
+     \setlength\cftbeforechapskip{20pt}
+	 \setlength\cftbeforesecskip{10pt}
+     \setlength\cftbeforesubsecskip{5pt}
+     \setlength\cftbeforesubsubsecskip{2.5pt}
+
+     \renewcommand{\cftchapafterpnum}{\vskip 0pt}
+     \renewcommand{\cftsecafterpnum}{\vskip 0pt}
+     \renewcommand{\cftsubsecafterpnum}{\vskip 1.5pt}
+     \renewcommand{\cftsubsubsecafterpnum}{\vskip 1pt}
+     
+     \setlength\cftbeforefigskip{15pt}
+	 \setlength\cftbeforetabskip{15pt}
+
+     \renewcommand{\cftfigafterpnum}{\vskip 1.2pt}
+     \renewcommand{\cfttabafterpnum}{\vskip 1.2pt}
+    
+	\setcounter{tocdepth}{4}
+	\pagestyle{plain}
+	\tableofcontents
+	\clearpage
+	\listoffigures
+	\clearpage
+	\listoftables
+	\clearpage
+}
+
+%Create the title page
+\newcommand{\MakeTitle}{
+
+\pagestyle{empty}
+
+\changetext{\baselineskip}{0em}{0em}{0em}{-40pt}
+
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{\raisebox{-\height}{\includegraphics[width=0.8\paperwidth]{img/NWU}}}%
+}
+
+{\fontfamily{phv}\selectfont 
+\begin{center}
+\begin{adjustbox}{minipage=[b][0.3\textheight][s]{1.15\textwidth},margin=-1cm 0cm 0cm 0cm}
+\begin{tabular}{p{\textwidth}} \vspace{4.5cm}
+	\centering\Huge\textbf{\mytitle
+			}\\
+		~\\
+		~\\
+		~\\
+		\LARGE\textbf{\centering \firstname ~ \surname}\\
+	\Large\centering
+	\img{img/ORCID}
+	~\textbf{orcid.org/{\color{black}{\orcid}}}\\
+	~\\
+	~\\
+	\Large\centering Thesis submitted for the degree \emph{\mscorphd} in {\myfield} at the \textbf{NWU}\\
+	~\\
+	~\\
+	\flushleft\Large Supervisor:	{\supervisor}\\
+	~\\
+	~\\
+	\large 2021\\
+	\Large \textit{School of Computer Science and Information Systems}\\
+	\Large North-West University\\
+	\large Student number: {\studentnumber}\\
+\end{tabular}
+\end{adjustbox}
+\end{center}
+}
+
+\clearpage
+
+\changetext{\baselineskip}{0em}{0em}{0em}{50pt}
+}
+
+

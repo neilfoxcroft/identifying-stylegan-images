@@ -1,0 +1,141 @@
+\documentclass[a4paper,oneside,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{helvet} 
+\usepackage[T1]{fontenc}
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage{pdfpages}
+\usepackage{float}
+
+\usepackage{NWUStyle}
+
+\usepackage[edges]{forest}
+
+\definecolor{foldercolor}{RGB}{124,166,198}
+
+\tikzset{pics/folder/.style={code={%
+    \node[inner sep=0pt, minimum size=#1](-foldericon){};
+    \node[folder style, inner sep=0pt, minimum width=0.3*#1, minimum height=0.6*#1, above right, xshift=0.05*#1] at (-foldericon.west){};
+    \node[folder style, inner sep=0pt, minimum size=#1] at (-foldericon.center){};}
+    },
+    pics/folder/.default={20pt},
+    folder style/.style={draw=foldercolor!80!black,top color=foldercolor!40,bottom color=foldercolor}
+}
+
+\forestset{is file/.style={edge path'/.expanded={%
+        ([xshift=\forestregister{folder indent}]!u.parent anchor) |- (.child anchor)},
+        inner sep=1pt},
+    this folder size/.style={edge path'/.expanded={%
+        ([xshift=\forestregister{folder indent}]!u.parent anchor) |- (.child anchor) pic[solid]{folder=#1}}, inner ysep=0.6*#1},
+    folder tree indent/.style={before computing
+     xy={l=#1}},
+    folder icons/.style={folder, this folder size=#1, folder tree indent=3*#1},
+    folder icons/.default={10pt},
+}
+
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+%================================================================================
+
+\begin{document}
+
+\Title{Identifying StyleGAN images}
+\Initials{N}
+\FirstName{Neil}
+\Surname{Foxcroft}
+\StudentNumber{28418077}
+\ORCID{0000-0002-8389-8826}
+\MScorPhD{Bachelors Honours}
+\Field{Computer Science and Information Technology}
+\Supervisor{Dr. R. Serfontein}
+%---------------------------------------------
+
+\MakeTitle %This command creates the Title page.
+
+
+%-------------------EDIT----------------------
+%Type your acknowledgements:
+\begin{Acknowledgements}{}
+			I would like to thank the following persons for their support and guidance throughout this project that enabled me to complete it successfully.
+			
+			Dr. Rudi Serfontein, Thank you for your insight and support in my research project and always being there to answer any questions I had. Your guidance enabled me to complete the project successfully and professionally. 
+			
+			Prof   Tiny Du Toit, Thank you for the knowledge you shared with me regarding anything related to artificial intelligence. As a master in your craft it was helpful to learn from you. Thank you for making available your GPU that helped me train a portion of my artefact on.
+			
+			Manre' van Zyl, Thank you for your help and support and the collaboration in the Labs throughout the year.
+			
+			Affaan Muhammad, Thank you for your insights and input and the support provided throughout the year.
+\end{Acknowledgements}
+%---------------------------------------------
+
+
+%-------------------EDIT----------------------
+%Type your abstract:
+\begin{Abstract}{}
+
+The creation of a Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN) introduced the world to the possibility that images can be generated in such a way that it is difficult for a human to detect that these images are not real. A study conducted on StyleGAN and Convolutional Neural Networks helped in the identification of these images. A was created artefact that demonstrate the proposed neural network solution method. The created CNN proved that this method of detection resulted in promising results. To improve the detection accuracy further the hyperparameter optimization framework Optuna was implemented on the neural network and dataset to increase the model's accuracy drastically. Hyperparameter optimization is a powerful tool in machine learning that can structure a neural network architecture in such a way that massive gains are made in the networks predictions. To allow for easy interaction a Front-end web application formed part of the artefact  and the Flask framework was used for the model implementation and the user interface. Uploading images to the application will provide users with feedback whether or not a specific image was generated using StyleGAN or if the image is that of a real human being. 
+
+\textbf{Keywords:} Convelutional Neural Network, Flask, Hyperparameter Optimization, Machine Learning, Neural Networks, Optuna, StyleGAN
+			%Provide all of your keywords here (separated by semi-colons. This will appear below the abstract.
+\end{Abstract}
+
+\begin{Opsomming}{}
+
+
+Die skepping van 'n stylgebaseerde skeppende argitektuur vir generatiewe teëstanderige netwerke (StyleGAN) het die wêreld bekendgestel aan die moontlikheid dat beelde op so 'n manier gegenereer kan word dat dit moeilik is vir 'n mens om vas te stel dat hierdie beelde nie werklik regte beelde is nie. 'n Studie wat op StyleGAN en 
+Konvolusiese Neurale Netwerke gedoen is, het gehelp met die identifisering van hierdie beelde.  'n Artefak was geskep wat die voorgestelde neurale netwerk oplossing metode demonstreer. Die geskepte KNN het bewys dat hierdie metode van identifikasie belowende resultate tot gevolg gehad het. Om die identifikasie akkuraatheid verder te verbeter, is die hiperparameter optimeringsraamwerk Optuna op die neurale netwerk en datastel geïmplementeer om die model se akkuraatheid drasties te verhoog. Hiperparameter-optimering is 'n kragtige instrument in masjienleer wat 'n neurale netwerkargitektuur op so 'n manier kan struktureer dat massiewe winste gemaak word in die netwerkvoorspellings. Om maklike interaksie moontlik te maak was daar 'n webtoepassing deel van die artefak ontwikkel en die Flask-raamwerk is gebruik vir die modelimplementering en die gebruikerskoppelvlak. Die oplaai van beelde na die toepassing sal gebruikers terugvoer gee of 'n spesifieke beeld met StyleGAN gegenereer is en as die beeld dié van 'n regte mens is.
+
+\textbf{Sleutelwoorde:}  Flask, Hiperparameter-optimering, Konvolusiese Neurale Netwerk, Masjienleer, Neurale Netwerke, Optuna, StyleGAN
+
+\end{Opsomming}
+%---------------------------------------------
+
+
+\MakeTOCandLOFandLOT %This command creates the table of contents, list of figures and list of tables.
+
+
+%-------------------EDIT----------------------
+%[OPTIONAL] Type your table of abbreviations. Delete this if you do not intend to use it.
+\begin{TableOfAbbrev}
+			A table containing a list of abbreviations in the order of appearance, that will be used throughout text.
+			\begin{table}[!htpb!]%
+			\begin{tabular}{ll}
+			\textbf{StyleGAN} & a Style-Based Generator Architecture for Generative Adversarial Networks\\
+			\textbf{GAN} & Generative Adversarial Network\\
+			\textbf{AI} & Artificial Intelligence\\
+			\textbf{DSRM} & Design Science Research Methodology\\
+			\textbf{SWOT} & Strengths, Weaknesses, Opportunities and Threats\\
+			\textbf{PaaS} & Platform as a Service\\
+			\textbf{IaaS} & Infrastructure as a Service\\
+			\textbf{VS Code} & Visual Studio Code\\
+			\textbf{px} & pixles\\
+			\textbf{URL} & Uniform Resource Locator\\
+			\end{tabular}
+			\end{table}
+\end{TableOfAbbrev}
+
+\pagestyle{fancy}
+\setcounter{page}{1}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[c]{\thepage}
+\pagenumbering{arabic}
+
+\input{chapters/CH1intro}
+\input{chapters/CH2litstudy}
+\input{chapters/CH3devart}
+\input{chapters/CH4results}
+\input{chapters/CH5reflection}
+
+\bibliography{MyBib.bib}
+
+\appendix			
+\input{appendix/APPethics}
+\input{appendix/APPrp}
+\input{appendix/APPnote1}
+\input{appendix/APPnote2}
+\end{document}
+

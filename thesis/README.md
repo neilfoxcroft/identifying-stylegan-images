@@ -1,0 +1,2 @@
+# StyleGAN-Identification
+StyleGAN is an open-source generative adversarial network (GAN) that can be used to generate faces of people that do not exist (such as those shown on ThisPersonDoesNotExist.com). This means that fraudsters can use StyleGAN generated faces that normally would pass a visual inspection conducted by a human inspector as part of false identities. The detection of such images with the use of artificial intelligence will be useful because of the factors that currently lead to misidentification.
