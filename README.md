@@ -6,9 +6,9 @@
 
 BSc Honours research project · Computer Science and Information Technology · North-West University · 2021
 
-[![Thesis PDF](https://img.shields.io/badge/Thesis-Download%20PDF-b31b1b?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/neilfoxcroft/identifying-stylegan-images/releases/latest/download/Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf)
+[![Thesis PDF](https://img.shields.io/badge/Thesis-Download%20PDF-b31b1b?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/neilfoxcroft/identifying-stylegan-images/raw/main/thesis/Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf)
 [![Video](https://img.shields.io/badge/Video-Watch%20on%20YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=MzG4RjvZbuo)
-[![Read online](https://img.shields.io/badge/Thesis-Read%20online-555?style=for-the-badge&logo=github)](thesis/Documentation_inProgress/Main.pdf)
+[![Read online](https://img.shields.io/badge/Thesis-Read%20online-555?style=for-the-badge&logo=github)](thesis/Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf)
 
 ![Python](https://img.shields.io/badge/Python-3.7%2B-3776AB?logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.6-FF6F00?logo=tensorflow&logoColor=white)
@@ -37,7 +37,7 @@ Hyperparameter optimisation took the model from a proof of concept to **97.6% te
 | **Optuna hyperparameter-optimised CNN** | **97.6%** | **97.0%** |
 
 <p align="center">
-  <img src="thesis/Documentation_inProgress/img/fcomp.png" width="720" alt="The web app correctly classifying a StyleGAN face and a real face with high confidence">
+  <img src="thesis/source/img/fcomp.png" width="720" alt="The web app correctly classifying a StyleGAN face and a real face with high confidence">
   <br><sub>The final model in the web app, classifying a StyleGAN face and a real face it had never seen.</sub>
 </p>
 
@@ -55,15 +55,16 @@ A 12-minute presentation of the research and a live demo of the web app.
 
 ```
 identifying-stylegan-images/
-├── thesis/                         # The honours thesis (LaTeX)
-│   ├── Documentation_inProgress/   # Final thesis source and compiled PDF
-│   │   ├── Main.tex / Main.pdf     #   entry point and final 97-page PDF
-│   │   ├── chapters/               #   1 Intro · 2 Literature · 3 Artefact · 4 Results · 5 Reflection
-│   │   ├── appendix/               #   ethics, research proposal, training notebooks (PDF)
-│   │   ├── img/                    #   figures
-│   │   ├── MyBib.bib               #   bibliography
-│   │   └── NWUStyle.sty            #   NWU thesis style
-│   └── Document_check/             # Earlier draft submitted for review
+├── thesis/                         # The honours thesis
+│   ├── Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf               # ← the final thesis (97 pages)
+│   ├── Identifying-StyleGAN-Images-Neil-Foxcroft-2021-full-quality.pdf  # same, original-resolution figures
+│   └── source/                     # LaTeX source
+│       ├── Main.tex                #   entry point
+│       ├── chapters/               #   1 Intro · 2 Literature · 3 Artefact · 4 Results · 5 Reflection
+│       ├── appendix/               #   ethics, research proposal, training notebooks (PDF)
+│       ├── img/                    #   figures
+│       ├── MyBib.bib               #   bibliography
+│       └── NWUStyle.sty            #   NWU thesis style
 └── webapp/                         # Flask web app that serves the trained model
     ├── app.py                      # Image upload, preprocessing and prediction
     ├── templates/                  # Home, result and error pages
@@ -101,11 +102,12 @@ Open <http://127.0.0.1:5000>, upload a face image, and the app returns its predi
 
 **Identifying StyleGAN images**: Neil Foxcroft, BSc Honours in Computer Science and Information Technology, North-West University (2021). Supervisor: Dr R. Serfontein.
 
-- 📄 **[Download the PDF](https://github.com/neilfoxcroft/identifying-stylegan-images/releases/latest/download/Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf)** (from the latest release)
-- 👀 **[Read it on GitHub](thesis/Documentation_inProgress/Main.pdf)**
-- 🛠️ **Build from source:** compile `thesis/Documentation_inProgress/Main.tex` with `pdflatex` → `bibtex` → `pdflatex` ×2
+- 📄 **[Download the PDF](https://github.com/neilfoxcroft/identifying-stylegan-images/raw/main/thesis/Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf)** (3.6 MB)
+- 👀 **[Read it on GitHub](thesis/Identifying-StyleGAN-Images-Neil-Foxcroft-2021.pdf)**
+- 🖼️ **[Full-quality version](thesis/Identifying-StyleGAN-Images-Neil-Foxcroft-2021-full-quality.pdf)** (44 MB, original-resolution figures)
+- 🛠️ **Build from source:** compile `thesis/source/Main.tex` with `pdflatex` → `bibtex` → `pdflatex` ×2
 
-The Google Colab training notebooks (including the Optuna study) are included as PDF printouts in [`thesis/Documentation_inProgress/appendix/`](thesis/Documentation_inProgress/appendix) (`nb1.pdf`, `nb2.pdf`).
+The Google Colab training notebooks (including the Optuna study) are included as PDF printouts in [`thesis/source/appendix/`](thesis/source/appendix) (`nb1.pdf`, `nb2.pdf`).
 
 ## History
 
