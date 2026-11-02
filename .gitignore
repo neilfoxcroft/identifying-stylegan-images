@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.venv/
+venv/
+.env
+
+# Web app runtime uploads
+webapp/uploads/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
